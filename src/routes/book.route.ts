@@ -1,8 +1,12 @@
 import { Router, Request, Response } from "express";
-import { BookController } from "../controllers/book.controler";
+import { BookController } from "../controllers/book.controller";
 
-const bookController = new BookController();
 const router: Router = Router();
-router.get("/", bookController.getBooks);
+const bookController = new BookController();
+
+router.get("/", bookController.getAllBooks);
+router.post("/", bookController.createBook);
+
+router.get("/:bookid", bookController.getBookById);
 
 export default router;
